@@ -70,7 +70,7 @@
                             <a class="btn btn-yellow mt-4 mr-3">
                                 Ver cardápio
                             </a>
-                            <a href="#" class="btn btn-white btn-icon-left mt-4">
+                            <a href="#" class="btn btn-white btn-icon-left mt-4" id="btnLigar" target="_blank">
                                 <span class="icon-left">
                                     <i class="fa fa-phone"></i>
                                 </span>
@@ -79,13 +79,13 @@
                         </div>
                     </div>
 
-                    <a href="" class="btn btn-sm btn-white btn-social mt-4 mt-3">
+                    <a href="#" target="_blank" class="btn btn-sm btn-white btn-social mt-4 mt-3">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="" class="btn btn-sm btn-white btn-social mt-4 mt-3">
+                    <a href="#" target="_blank" class="btn btn-sm btn-white btn-social mt-4 mt-3">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="" class="btn btn-sm btn-white btn-social mt-4">
+                    <a href="#" target="_blank" class="btn btn-sm btn-white btn-social mt-4">
                         <i class="fab fa-whatsapp"></i>
                     </a>
 
@@ -314,9 +314,9 @@
 
                     </div>
 
-                    <a href="" class="btn btn-sm btn-white btn-social mr-3 active">1</a>
-                    <a href="" class="btn btn-sm btn-white btn-social mr-3">2</a>
-                    <a href="" class="btn btn-sm btn-white btn-social">3</a>
+                    <a id="btnDepoimento-1" class="btn btn-sm btn-white btn-social mr-3 active" onclick="cardapio.metodos.abrirDepoimento(1)">1</a>
+                    <a id="btnDepoimento-2" class="btn btn-sm btn-white btn-social mr-3"  onclick="cardapio.metodos.abrirDepoimento(2)">2</a>
+                    <a id="btnDepoimento-3" class="btn btn-sm btn-white btn-social"  onclick="cardapio.metodos.abrirDepoimento(3)">3</a>
 
                 </div>
 
@@ -343,7 +343,7 @@
                                     Reserve sua data e horário de forma simples e rápida.
                                 </p>
 
-                                <a class="btn btn-yellow mt-4">Fazer reserva</a>
+                                <a class="btn btn-yellow mt-4" href="" id="btnReserva" target="_blank">Fazer reserva</a>
                             </div>
 
                             <div class="col-5">
@@ -371,7 +371,7 @@
                     <img class="logo-footer" src="./img/logo.png" alt="">
                 </div>
                 <div class="col-6 container-texto-footer">
-                    <p class="mb-0"><b>Menu On-line</b> &copy; Todos os direitos reservados</p>
+                    <p class="mb-0"><b>Menu On-line</b> &copy; Todos os direitos reservados a Paulo Roberto </p>
                 </div>
                 <div class="col-3 container-redes-footer">
 
