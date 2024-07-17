@@ -8,6 +8,10 @@ $(document).ready(function () {
 
 var cardapio = {};
 
+var VALOR_CARRINHO = 0;
+
+var VALOR_ENTREGA = 5;
+
 var MEU_CARRINHO = [];
 
 cardapio.eventos = {
@@ -239,11 +243,17 @@ cardapio.metodos = {
                     .replace(/\${qntd}/g, e.qntd);
 
                 $("#itensCarrinho").append(temp);
+
+                //ultimo item
+                if ((i + 1) == MEU_CARRINHO.length) {
+                    cardapio.metodos.carregarValores();
+                }
             })
 
         }
         else {
             $("#itensCarrinho").html('<p class="carrinho-vazio"> <i class="fa fa-shopping-bag"></i>Seu carrinho está vazio.</p>');
+            cardapio.metodos.carregarValores();
         }
     },
     //diminuir quantidade do item no carrinho
@@ -266,7 +276,7 @@ cardapio.metodos = {
         let qntdAtual = parseInt($("#qntd-carrinho-" + id).text());
         $("#qntd-carrinho-" + id).text(qntdAtual + 1);
 
-        cardapio.metodos.atualizaarCarrinho(id, qntdAtual + 1);
+        cardapio.metodos.atualizarCarrinho(id, qntdAtual + 1);
     },
 
     //botao remover item do carrinho
@@ -286,6 +296,31 @@ cardapio.metodos = {
 
         //atualiza o botão carrinho com a quantidade atualizada
         cardapio.metodos.atualizarBadgeTotal();
+
+        //atualiza os valores (R$) totais do carrinho
+        cardapio.metodos.carregarValores();
+
+    },
+
+    //carrega os valores de subtotal, entrega e total
+    carregarValores: () => {
+
+        VALOR_CARRINHO = 0;
+
+        $("#lblSubTotal").text('R$ 0,00');
+        $("#lblValorEntrega").text('+ R$ 0,00');
+        $("#lblValorTotal").text('R$ 0,00');
+
+        $.each(MEU_CARRINHO, (i, e) => {
+
+            VALOR_CARRINHO += parseFloat(e.price * e.qntd);
+
+            if ((i +1) == MEU_CARRINHO.length) {
+                $("#lblSubTotal").text(`R$ ${VALOR_CARRINHO.toFixed(2).replace('.',',')}`);
+                $("#lblValorEntrega").text(`+ R$ ${VALOR_ENTREGA.toFixed(2).replace('.',',')}`);
+                $("#lblValorTotal").text(`R$ ${(VALOR_CARRINHO + VALOR_ENTREGA).toFixed(2).replace('.',',')}`);
+            }
+        })
 
     },
 
